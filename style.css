@@ -1,6 +1,28 @@
-.newBook button {
+.title {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    text-align: center;
+    place-items: center;
+}
+
+.title button {
     background-color: lightblue;
     border-radius: 15px;
     width: 15vh;
     height: 5vh;
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 15vh;
+
+}
+
+.library li {
+    border: 1px solid black;
+    list-style-type: none;
 }
