@@ -16,15 +16,26 @@ function displayLibrary(library) {
     const bookList = document.getElementById("book-list");
     library.forEach(book => {
         const li = document.createElement("li");
-        li.textContent = 
-            `Title: ${book.title}\n` +
-            `Author: ${book.author}\n` +
-            `Pages: ${book.pages}\n` +
-            `Status: ${book.read ? "Read" : "Not Read"}\n` +
-            `ID: ${book.id}`;
+        li.id = book.id;
+        li.innerHTML = 
+            `Title: ${book.title}<br>` +
+            `Author: ${book.author}<br>` +
+            `Pages: ${book.pages}<br>` +
+            `Status: ${book.read ? "Read" : "Not Read"}`
+        const button = document.createElement("button");
+        button.textContent = "Remove";
+        button.addEventListener("click", () => removeBook(book.id));
+        li.appendChild(button);
         bookList.appendChild(li);
     });
 }
+
+function removeBook(bookId) {
+    const bookToRemove = document.getElementById(bookId);
+    const bookList = document.getElementById("book-list");
+    bookList.removeChild(bookToRemove);
+}
+
 
 
 addBookToLibrary(myLibrary, "LOTR", "JRR-Tolkien", 800, true);
