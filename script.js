@@ -14,6 +14,7 @@ function addBookToLibrary(library, title, author, pages, read) {
 
 function displayLibrary(library) {
     const bookList = document.getElementById("book-list");
+    bookList.innerHTML = "";
     library.forEach(book => {
         const li = document.createElement("li");
         li.id = book.id;
@@ -35,6 +36,17 @@ function removeBook(bookId) {
     const bookList = document.getElementById("book-list");
     bookList.removeChild(bookToRemove);
 }
+
+const form = document.getElementById("book-form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const readStatus = document.getElementById("readStatus").value;
+    addBookToLibrary(myLibrary, title, author, pages, readStatus);
+    displayLibrary(myLibrary);
+});
 
 
 
